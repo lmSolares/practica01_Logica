@@ -13,21 +13,24 @@ import GHC.Generics
 -- first vowelsq
 firstVowels :: String -> String
 firstVowels [] = []
-firstVowels (x : xs) = if(isVowel x) then 
+firstVowels (x : xs) = getVowels (x : xs) ++ getConsonants (x : xs)
 
--- getTail
-getTail :: String -> String
-getTail [] = []
-getTail (x : xs) = xs
+-- getConsonants
+getConsonants :: String -> String
+getConsonants [] = []
+getConsonants (x : xs) = if isVowel x == False then [x] ++ getConsonants xs else getConsonants xs
 
--- getFirst
-getFirst :: String -> Char
-getFirst [] = ' '
-getFirst (x : xs) = x
+-- getVowels
+getVowels :: String -> String
+getVowels [] = []
+getVowels (x : xs) =
+  if isVowel x
+    then [x] ++ getVowels xs
+    else getVowels xs
 
 -- isVowel
 isVowel :: Char -> Bool
-isVowel x = if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x == 'A' || x == 'E' || x == 'I'|| x == 'O' || x == 'U') then True else False
+isVowel x = if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U') then True else False
 
 -- is anagram
 isAnagram :: String -> String -> Bool
