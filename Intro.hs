@@ -18,7 +18,10 @@ firstVowels (x : xs) = getVowels (x : xs) ++ getConsonants (x : xs)
 -- getConsonants
 getConsonants :: String -> String
 getConsonants [] = []
-getConsonants (x : xs) = if isVowel x == False then [x] ++ getConsonants xs else getConsonants xs
+getConsonants (x : xs) =
+  if isVowel x == False
+    then [x] ++ getConsonants xs
+    else getConsonants xs
 
 -- getVowels
 getVowels :: String -> String
