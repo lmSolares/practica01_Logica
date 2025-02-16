@@ -1,4 +1,7 @@
 ### Lógica Computacional
 # Práctica 01: Introducción a Haskell 
 
-Luis Mario Solares Ramos 
+- Solares Ramos Luis Mario
+- Morales Sánchez Jennifer Lillian
+- Hernández Torres Marco Antonio
+ 
