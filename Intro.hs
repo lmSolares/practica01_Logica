@@ -56,7 +56,7 @@ commonSuffix = undefined
 
 -- intersection
 interseccion :: (Eq a) => [a] -> [a] -> [a]
-interseccion = undefined
+interseccion xs ys = [y | y <- ys, y `elem` xs]
 
 -- ackerman
 ackerman :: Integer -> Integer -> Integer
