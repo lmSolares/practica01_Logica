@@ -18,7 +18,7 @@ firstVowels (x : xs) = getVowels (x : xs) ++ getConsonants (x : xs)
 -- get consonants
 getConsonants :: String -> String
 getConsonants [] = []
-getConsonants (x : xs) =
+getConsonants (x : xs) = 
   if isVowel x == False
     then [x] ++ getConsonants xs
     else getConsonants xs
@@ -38,17 +38,9 @@ isVowel x = if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x ==
 -- is anagram
 isAnagram :: String -> String -> Bool
 isAnagram x y =
-  if sortString (deleteSpaces x) == sortString (deleteSpaces y) 
+  if sort (deleteSpaces x) == sort (deleteSpaces y) 
     then True
     else False
-
--- sort string
-sortString :: String -> String
-sortString [] = []
-sortString (x:xs) =
-  if x >= getFirst xs
-    then sortString (sortString xs) ++ [x]
-    else [x] ++ xs
 
 -- delete spaces
 deleteSpaces :: String -> String
@@ -58,11 +50,6 @@ deleteSpaces (x:xs) =
     then deleteSpaces xs
     else [x] ++ deleteSpaces xs
 
--- get first
-getFirst :: String -> Char
-getFirst [] = ' '
-getFirst (x:xs) = x
- 
 -- common suffix
 commonSuffix :: [String] -> String
 commonSuffix = undefined
