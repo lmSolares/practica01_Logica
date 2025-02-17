@@ -52,7 +52,21 @@ deleteSpaces (x:xs) =
 
 -- common suffix
 commonSuffix :: [String] -> String
-commonSuffix = undefined
+commonSuffix [] = ""
+commonSuffix xs = reverse (foldl commonPrefix (head inverted) (tail inverted))
+  where inverted = invertedWord xs
+
+-- common prefix
+commonPrefix :: String -> String -> String
+commonPrefix (x:xs) (y:ys) 
+  | x == y  = x : commonPrefix xs ys
+  | otherwise = []
+commonPrefix _ _ = []
+
+-- inverted word
+invertedWord :: [String] -> [String]
+invertedWord xs = map reverse xs
+
 
 -- intersection
 interseccion :: (Eq a) => [a] -> [a] -> [a]
