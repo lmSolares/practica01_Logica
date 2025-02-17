@@ -60,11 +60,18 @@ interseccion xs ys = [y | y <- ys, y `elem` xs]
 
 -- ackerman
 ackerman :: Integer -> Integer -> Integer
-ackerman = undefined
+ackerman m n
+  | m == 0    = n + 1
+  | n == 0    = ackerman (m - 1) 1
+  | otherwise = ackerman (m - 1) (ackerman m (n - 1))
 
 -- quicksort
 quicksort :: (Ord a) => [a] -> [a]
-quicksort = undefined
+quicksort [] = []
+quicksort (x:xs) =  
+  let left  = quicksort [a | a <- xs, a <= x]
+      right = quicksort [a | a <- xs, a > x]
+  in  left ++ [x] ++  right
 
 -- Definición de un árbol binario de búsqueda (BST)
 data BTree a
