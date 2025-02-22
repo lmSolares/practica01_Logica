@@ -8,7 +8,7 @@ module Intro where
 
 import Data.Char
 import Data.List
-import GHC.Generics
+import GHC.Generics 
 
 -- first vowelsq
 firstVowels :: String -> String
@@ -34,6 +34,8 @@ getVowels (x : xs) =
 -- is vowel
 isVowel :: Char -> Bool
 isVowel x = if (x == 'a' || x == 'e' || x == 'i' || x == 'o' || x == 'u' || x == 'A' || x == 'E' || x == 'I' || x == 'O' || x == 'U') then True else False
+--Sol Alt:
+--isVowel x = x `elem` "aeiouAEIOU"
 
 -- is anagram
 isAnagram :: String -> String -> Bool
@@ -67,10 +69,11 @@ commonPrefix _ _ = []
 invertedWord :: [String] -> [String]
 invertedWord xs = map reverse xs
 
-
 -- intersection
-interseccion :: (Eq a) => [a] -> [a] -> [a]
-interseccion xs ys = [y | y <- ys, y `elem` xs]
+intersection :: (Eq a) => [a] -> [a] -> [a]
+intersection xs ys = foldl (\acc y -> if y `elem` xs && not (y `elem` acc) 
+                                      then acc ++ [y] 
+                                      else acc) [] ys
 
 -- ackerman
 ackerman :: Integer -> Integer -> Integer
@@ -95,19 +98,28 @@ data BTree a
 
 -- bTreeInsert
 bTreeInsert :: (Ord a) => a -> BTree a -> BTree a
-bTreeInsert = undefined
+bTreeInsert x Empty = Node x Empty Empty
+bTreeInsert x (Node a left right)
+  | x <= a    = Node a (bTreeInsert x left) right
+  | otherwise = Node a left (bTreeInsert x right)
 
 -- bTreeSearch
 bTreeSearch :: (Ord a) => a -> BTree a -> Bool
-bTreeSearch = undefined
+bTreeSearch _ Empty = False
+bTreeSearch x (Node a left right)
+  | x == a    = True
+  | x < a     = bTreeSearch x left
+  | otherwise = bTreeSearch x right
 
 -- bTreeMap
 bTreeMap :: (a -> b) -> BTree a -> BTree b
-bTreeMap = undefined
+bTreeMap _ Empty = Empty
+bTreeMap f (Node a left right) = Node (f a) (bTreeMap f left) (bTreeMap f right)
 
 -- bTreeHeight
 bTreeHeight :: BTree a -> Int
-bTreeHeight = undefined
+bTreeHeight Empty = 0
+bTreeHeight (Node _ left right) = 1 + max (bTreeHeight left) (bTreeHeight right)
 
 -- Ejemplo de arbol
 bTree1 =

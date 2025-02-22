@@ -4,7 +4,7 @@ module TestSolucion where
 import Intro
 import Test.QuickCheck
 import Data.Char (toLower, isSpace)
-import Data.List (sort, isSuffixOf)
+import Data.List (sort, isSuffixOf, nub)
 
 ----------------------------
 -- Pruebas para firstVowels
@@ -50,9 +50,9 @@ prop_commonSuffixIsSuffix xs =
 -- todos los elementos que estén en ambas listas.
 prop_interseccionElements :: [Int] -> [Int] -> Bool
 prop_interseccionElements xs ys =
-  let res = interseccion xs ys
+  let res = intersection xs ys
   in  all (`elem` xs) res &&
-      length res == length (filter (`elem` xs) ys)
+      length res == length (nub (filter (`elem` xs) ys))
 
 ----------------------------
 -- Pruebas para ackerman
@@ -197,3 +197,4 @@ main = do
                           score_interseccion + score_ackerman + score_quicksort + score_bTree
       calificacion      = (puntajeTotal / 16) * 10
   putStrLn $ "Calificación tentativa: " ++ show calificacion
+  
