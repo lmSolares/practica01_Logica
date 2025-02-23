@@ -69,8 +69,8 @@ invertedWord xs = map reverse xs
 
 
 -- intersection
-interseccion :: (Eq a) => [a] -> [a] -> [a]
-interseccion xs ys = [y | y <- ys, y `elem` xs]
+intersection :: (Eq a) => [a] -> [a] -> [a]
+intersection xs ys = [y | y <- ys, y `elem` xs]
 
 -- ackerman
 ackerman :: Integer -> Integer -> Integer
