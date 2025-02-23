@@ -197,3 +197,4 @@ main = do
                           score_interseccion + score_ackerman + score_quicksort + score_bTree
       calificacion      = (puntajeTotal / 16) * 10
   putStrLn $ "Calificación tentativa: " ++ show calificacion
+  
