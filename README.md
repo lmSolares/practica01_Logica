@@ -12,7 +12,7 @@ La idea es que con las funciones auxiliares getVowels & getConsonants podamos re
 Primero eliminamos los espacios de ambas cadenas, despues con la función sort, las ordenamos, para despues compararlos y dar un resultado.
 
 3. Sufijo comun
-Se usaron dos funciones auxiliares, una para invertir la palabra y la otra para encontrar el prefijo en común. En la función de sufijo común se invierte la palabra y se van plegando las letras que sean prefijo común 
+Se usaron dos funciones auxiliares, una para invertir la palabra y la otra para encontrar el prefijo en común. En la función de sufijo común se invierte la palabra y se van plegando las letras que sean prefijo común. Se hizo uso de foldl en lugar de foldr ya que foldr r
 
 4. Intersección de Listas:
 Tomamos dos listas y devuelve una lista nueva que tiene los elementos que aparecen en ambas sin elementos duplicados.recorre la segunda lista ys con un acumulador que empieza vacío y para cada elemento en la lista ys verifica dos que y este en la primera lista xs y que y no este en el acumulador para evitar duplicas de elementos y si no, lo deja como esta, si se satisfacen las condiciones se añade y al final del acumulador para asi meterlo a la lista.
