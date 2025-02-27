@@ -147,3 +147,14 @@ bTree1 =
 -- | Número de pruebas
 pruebas :: Int
 pruebas = 1000
+
+--hacer una funcion que dado un arbol cuente la cantidad de hojas que tiene
+countLeafs :: BTree a -> Int
+countLeafs Empty = 0
+countLeafs (Node _ Empty Empty) = 1
+countLeafs (Node _ left right) = countLeafs left + countLeafs right  
+  
+--una funcion que reciba lista de tuplas de enteros y aplica la funcion hacherman a las tuplas de la primer lista
+tupAckerman :: [(Integer,Integer)] -> [Integer]
+tupAckerman [] = []
+tupAckerman xs = foldl(\acc (m,n) -> acc ++ [ackerman m n]) [] xs
